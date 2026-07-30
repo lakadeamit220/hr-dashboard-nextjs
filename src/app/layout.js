@@ -11,10 +11,14 @@ export const metadata = {
   description: "Modern HR Management Dashboard",
 };
 
+import DashboardLayout from "@/components/layout/DashboardLayout";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans text-gray-900 bg-surface-50">
+        <DashboardLayout>{children}</DashboardLayout>
+      </body>
     </html>
   );
 }

@@ -3,10 +3,13 @@ import Button from "@/components/ui/Button";
 import { Edit2, Mail, Phone, MapPin } from "lucide-react";
 import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
+import { getAvatarColorClass } from "@/lib/utils";
 
 export default function EmployeeCard({ employee, onEdit }) {
   // Get Initials
   const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
+  const fullName = `${employee.firstName} ${employee.lastName}`;
+  const avatarColor = getAvatarColorClass(fullName);
   
   // Find status config to get the correct color mapping
   const statusConfig = STATUSES.find(s => s.value === employee.status) || STATUSES[0];
@@ -25,23 +28,23 @@ export default function EmployeeCard({ employee, onEdit }) {
       <div className="flex justify-between items-start mb-4">
         <div className="flex gap-3 items-center">
           {employee.avatar ? (
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-primary-100">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gray-100 shadow-sm">
               <Image 
                 src={employee.avatar} 
-                alt={`${employee.firstName} ${employee.lastName}`} 
+                alt={fullName} 
                 fill
                 className="object-cover"
               />
             </div>
           ) : (
-            <div className="w-14 h-14 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center text-xl font-bold border-2 border-primary-50">
+            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold border-2 shadow-sm ${avatarColor}`}>
               {initials}
             </div>
           )}
           
           <div>
             <h3 className="font-semibold text-gray-900 text-lg line-clamp-1">
-              {employee.firstName} {employee.lastName}
+              {fullName}
             </h3>
             <p className="text-sm text-gray-500 line-clamp-1">{employee.designation}</p>
           </div>

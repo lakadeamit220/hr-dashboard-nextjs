@@ -1,11 +1,26 @@
-import { getAllEmployees, getStatusCounts, getNewJoinersCount } from "@/lib/data";
+import { 
+  getAllEmployees, 
+  getStatusCounts, 
+  getNewJoinersCount,
+  getDepartmentDistribution,
+  getPerformanceDistribution,
+  getAttendanceData
+} from "@/lib/data";
+
 import KpiCard from "@/components/dashboard/KpiCard";
+import DepartmentChart from "@/components/charts/DepartmentChart";
+import PerformanceChart from "@/components/charts/PerformanceChart";
+import AttendanceChart from "@/components/charts/AttendanceChart";
 import { Users, UserCheck, CalendarOff, UserPlus } from "lucide-react";
 
 export default function Home() {
+  // Fetch data
   const employees = getAllEmployees();
   const statusCounts = getStatusCounts();
   const newJoiners = getNewJoinersCount();
+  const departmentData = getDepartmentDistribution();
+  const performanceData = getPerformanceDistribution();
+  const attendanceData = getAttendanceData();
   
   return (
     <div className="flex flex-col gap-8">
@@ -41,20 +56,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Placeholder for charts */}
+      {/* Charts Section - Row 1 */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow-card p-6 h-80 flex items-center justify-center border border-gray-100 text-gray-400">
-          Chart 1 Placeholder
-        </div>
-        <div className="bg-white rounded-xl shadow-card p-6 h-80 flex items-center justify-center border border-gray-100 text-gray-400">
-          Chart 2 Placeholder
-        </div>
+        <DepartmentChart data={departmentData} />
+        <PerformanceChart data={performanceData} />
       </section>
       
+      {/* Charts Section - Row 2 */}
       <section>
-        <div className="bg-white rounded-xl shadow-card p-6 h-80 flex items-center justify-center border border-gray-100 text-gray-400">
-          Chart 3 Placeholder
-        </div>
+        <AttendanceChart data={attendanceData} />
       </section>
     </div>
   );

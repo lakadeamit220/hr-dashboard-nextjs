@@ -209,6 +209,46 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
         error={errors.address?.message}
       />
 
+      {/* Documents Section */}
+      {isEditing && employee.documents && employee.documents.length > 0 && (
+        <div className="pt-4 border-t border-gray-200">
+          <h4 className="text-sm font-medium text-gray-900 mb-3">Uploaded Documents</h4>
+          <div className="space-y-2">
+            {employee.documents.map(doc => (
+              <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white rounded-md text-blue-600 border border-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">{doc.name}</p>
+                    <p className="text-xs text-gray-500">{doc.size} • Uploaded {new Date(doc.uploadDate).toLocaleDateString()}</p>
+                  </div>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  type="button"
+                  onClick={() => {
+                    // Simulate document download
+                    const blob = new Blob(["Simulated document content for " + doc.name], { type: "text/plain" });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = doc.name.replace('.pdf', '.txt'); // forcing txt since it's fake text
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                  }}
+                  className="text-primary-600 hover:bg-primary-50"
+                >
+                  Download
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className={`flex items-center pt-4 border-t border-gray-200 ${isEditing ? 'justify-between' : 'justify-end'}`}>
         {isEditing && (
           <Button 

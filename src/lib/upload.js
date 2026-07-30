@@ -18,11 +18,11 @@ export async function processUpload(file) {
     throw new Error('File size must be less than 2MB.');
   }
 
-  // Convert File object to ArrayBuffer, then to Base64
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-  const base64String = buffer.toString('base64');
-  
-  // Return the data URI
-  return `data:${file.type};base64,${base64String}`;
+  // Convert File to Base64 using the browser-native FileReader API
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error('Failed to read file.'));
+    reader.readAsDataURL(file);
+  });
 }

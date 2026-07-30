@@ -33,7 +33,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
       phone: "",
       department: "",
       designation: "",
-      status: "Active",
+      status: "active",
       salary: "",
       joiningDate: new Date().toISOString().split('T')[0],
       performanceRating: 3,
@@ -95,7 +95,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
           editEmployee(employee.id, employeeData);
         } else {
           // Add generated ID from server simulation
-          addEmployee({ ...employeeData, id: result.id });
+          addEmployee({ ...employeeData, id: result.id, documents: [] });
         }
         
         onSuccess && onSuccess(result.message);

@@ -82,7 +82,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
           <Briefcase className="w-5 h-5 text-gray-400 mt-0.5 shrink-0" />
           <div>
             <p className="text-sm font-medium text-gray-900">Salary</p>
-            <p className="text-sm text-gray-500">₹{employee.salary.toLocaleString('en-IN')}</p>
+            <p className="text-sm text-gray-500">{Number(employee.salary).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}</p>
           </div>
         </div>
         
@@ -90,7 +90,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
           <Star className="w-5 h-5 text-gray-400 mt-0.5 shrink-0" />
           <div>
             <p className="text-sm font-medium text-gray-900">Performance Rating</p>
-            <p className="text-sm text-gray-500">{employee.performanceRating} / 5.0</p>
+            <p className="text-sm text-gray-500">{employee.performanceRating}</p>
           </div>
         </div>
       </div>

@@ -2,9 +2,11 @@
 
 import { Bell, Search, Menu, User } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useStore } from "@/lib/store";
 
-export default function Header({ toggleSidebar }) {
+export default function Header() {
   const pathname = usePathname();
+  const toggleSidebar = useStore((state) => state.toggleSidebar);
   
   // Simple mapping for page title
   let pageTitle = "Dashboard";

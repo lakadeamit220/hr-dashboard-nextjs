@@ -5,8 +5,11 @@ import EmployeeCard from "./EmployeeCard";
 import EmployeeRow from "./EmployeeRow";
 import { Inbox } from "lucide-react";
 
-export default function EmployeeList({ viewMode, onEdit }) {
-  const { employees, searchQuery, statusFilter, departmentFilter } = useStore();
+export default function EmployeeList({ viewMode, onEdit, onView }) {
+  const employees = useStore((state) => state.employees);
+  const searchQuery = useStore((state) => state.searchQuery);
+  const statusFilter = useStore((state) => state.statusFilter);
+  const departmentFilter = useStore((state) => state.departmentFilter);
 
   // Derived state: Filtered Employees
   const filteredEmployees = employees.filter((emp) => {
@@ -41,28 +44,38 @@ export default function EmployeeList({ viewMode, onEdit }) {
 
   return (
     <>
-      {viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-fade-in">
-          {filteredEmployees.map((emp) => (
-            <EmployeeCard key={emp.id} employee={emp} onEdit={onEdit} />
+      {viewMode === "grid" ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in duration-300">
+          {filteredEmployees.map((employee) => (
+            <EmployeeCard 
+              key={employee.id} 
+              employee={employee} 
+              onEdit={onEdit} 
+              onView={onView}
+            />
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden animate-fade-in">
+        <div className="bg-white rounded-xl shadow-card border border-gray-100 overflow-hidden animate-in fade-in duration-300">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Employee</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Role & Dept</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Actions</th>
+                <tr className="bg-gray-50/50 border-b border-gray-100 text-xs uppercase tracking-wider text-gray-500">
+                  <th className="px-6 py-4 font-semibold">Employee</th>
+                  <th className="px-6 py-4 font-semibold">Role & Dept</th>
+                  <th className="px-6 py-4 font-semibold">Phone</th>
+                  <th className="px-6 py-4 font-semibold">Status</th>
+                  <th className="px-6 py-4 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {filteredEmployees.map((emp) => (
-                  <EmployeeRow key={emp.id} employee={emp} onEdit={onEdit} />
+                {filteredEmployees.map((employee) => (
+                  <EmployeeRow 
+                    key={employee.id} 
+                    employee={employee} 
+                    onEdit={onEdit} 
+                    onView={onView}
+                  />
                 ))}
               </tbody>
             </table>

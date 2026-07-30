@@ -5,7 +5,7 @@ import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
 import { getAvatarColorClass } from "@/lib/utils";
 
-export default function EmployeeCard({ employee, onEdit }) {
+export default function EmployeeCard({ employee, onEdit, onView }) {
   // Get Initials
   const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
   const fullName = `${employee.firstName} ${employee.lastName}`;
@@ -81,15 +81,25 @@ export default function EmployeeCard({ employee, onEdit }) {
           )}
         </div>
         
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          leftIcon={Edit2}
-          onClick={() => onEdit && onEdit(employee)}
-          className="text-gray-500 hover:text-primary-600 hover:bg-primary-50"
-        >
-          Edit
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => onView && onView(employee)}
+            className="text-gray-500 hover:text-primary-600 hover:bg-primary-50"
+          >
+            View
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            leftIcon={Edit2}
+            onClick={() => onEdit && onEdit(employee)}
+            className="text-gray-500 hover:text-primary-600 hover:bg-primary-50"
+          >
+            Edit
+          </Button>
+        </div>
       </div>
     </div>
   );

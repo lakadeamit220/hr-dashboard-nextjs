@@ -5,7 +5,7 @@ import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
 import { getAvatarColorClass } from "@/lib/utils";
 
-export default function EmployeeRow({ employee, onEdit }) {
+export default function EmployeeRow({ employee, onEdit, onView }) {
   // Get Initials
   const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
   const fullName = `${employee.firstName} ${employee.lastName}`;
@@ -66,15 +66,25 @@ export default function EmployeeRow({ employee, onEdit }) {
         )}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          leftIcon={Edit2}
-          onClick={() => onEdit && onEdit(employee)}
-          className="text-gray-400 hover:text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity"
-        >
-          Edit
-        </Button>
+        <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Button 
+            variant="ghost" 
+            size="sm"
+            onClick={() => onView && onView(employee)}
+            className="text-gray-500 hover:text-primary-600"
+          >
+            View
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            leftIcon={Edit2}
+            onClick={() => onEdit && onEdit(employee)}
+            className="text-gray-400 hover:text-primary-600"
+          >
+            Edit
+          </Button>
+        </div>
       </td>
     </tr>
   );

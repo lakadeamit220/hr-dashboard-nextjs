@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import EmployeeFilters from "@/components/employees/EmployeeFilters";
 import EmployeeList from "@/components/employees/EmployeeList";
 import EmployeeForm from "@/components/employees/EmployeeForm";
+import EmployeeDetailPanel from "@/components/employees/EmployeeDetailPanel";
 import Modal from "@/components/ui/Modal";
 import { useStore } from "@/lib/store";
 import { getAllEmployees } from "@/lib/data";
@@ -13,7 +14,8 @@ export default function EmployeesPage() {
   
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState(null); // null for Add, object for Edit
+  const [modalMode, setModalMode] = useState("add"); // "add", "edit", "view"
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
   
   const setEmployees = useStore((state) => state.setEmployees);
   const employees = useStore((state) => state.employees);
@@ -28,17 +30,28 @@ export default function EmployeesPage() {
 
   const handleAddEmployee = () => {
     setSelectedEmployee(null);
+    setModalMode("add");
     setIsModalOpen(true);
   };
 
   const handleEditEmployee = (employee) => {
     setSelectedEmployee(employee);
+    setModalMode("edit");
+    setIsModalOpen(true);
+  };
+
+  const handleViewEmployee = (employee) => {
+    setSelectedEmployee(employee);
+    setModalMode("view");
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedEmployee(null);
+    setTimeout(() => {
+      setSelectedEmployee(null);
+      setModalMode("add");
+    }, 200); // Wait for transition before clearing data
   };
 
   const handleFormSuccess = (message) => {
@@ -60,19 +73,32 @@ export default function EmployeesPage() {
       
       <EmployeeList 
         viewMode={viewMode} 
-        onEdit={handleEditEmployee} 
+        onEdit={handleEditEmployee}
+        onView={handleViewEmployee}
       />
 
       <Modal 
         isOpen={isModalOpen} 
         onClose={handleCloseModal}
-        title={selectedEmployee ? "Edit Employee" : "Add New Employee"}
+        title={
+          modalMode === "add" ? "Add New Employee" :
+          modalMode === "edit" ? "Edit Employee" :
+          "Employee Details"
+        }
       >
-        <EmployeeForm 
-          employee={selectedEmployee} 
-          onSuccess={handleFormSuccess}
-          onCancel={handleCloseModal}
-        />
+        {modalMode === "view" ? (
+          <EmployeeDetailPanel 
+            employee={selectedEmployee} 
+            onEdit={handleEditEmployee}
+            onClose={handleCloseModal}
+          />
+        ) : (
+          <EmployeeForm 
+            employee={selectedEmployee} 
+            onSuccess={handleFormSuccess}
+            onCancel={handleCloseModal}
+          />
+        )}
       </Modal>
     </div>
   );

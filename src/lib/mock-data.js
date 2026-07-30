@@ -12,7 +12,9 @@ export const initialEmployees = [
     performanceRating: "Exceeds Expectations",
     salary: 1250000,
     avatar: null,
-    documents: [],
+    documents: [
+      { id: "doc-001", name: "Offer_Letter.pdf", type: "application/pdf", size: "1.2 MB", uploadDate: "2021-03-10" }
+    ],
     address: "Kothrud, Pune"
   },
   {

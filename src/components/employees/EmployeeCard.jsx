@@ -66,9 +66,17 @@ export default function EmployeeCard({ employee, onEdit }) {
       </div>
       
       <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
-        <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md">
-          {employee.department}
-        </span>
+        <div className="flex gap-2 items-center">
+          <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md">
+            {employee.department}
+          </span>
+          {employee.documents && employee.documents.length > 0 && (
+            <span className="flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md" title={`${employee.documents.length} document(s)`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+              {employee.documents.length}
+            </span>
+          )}
+        </div>
         
         <Button 
           variant="ghost" 

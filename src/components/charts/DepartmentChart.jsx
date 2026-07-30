@@ -99,14 +99,12 @@ export default function DepartmentChart({ data }) {
       <div className="flex-1 flex items-center justify-center min-h-[300px]">
         {/* We wrap it in a div to prevent hydration mismatch for width/height */}
         <div className="w-full h-full flex justify-center">
-          {typeof window !== "undefined" && (
-            <ReactApexChart 
-              options={options} 
-              series={series} 
-              type="donut" 
-              height={320} 
-            />
-          )}
+          <ReactApexChart 
+            options={options} 
+            series={series} 
+            type="donut" 
+            height={320} 
+          />
         </div>
       </div>
     </div>

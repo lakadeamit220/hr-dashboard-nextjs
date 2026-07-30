@@ -44,8 +44,11 @@ This application serves as an Employee Management System MVP, featuring robust C
 
 ## Installation & Setup
 
-1. **Clone or Download the Repository:**
-   Ensure you are in the project root directory (`hr-dashboard-nextjs`).
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/lakadeamit220/hr-dashboard-nextjs.git
+   cd hr-dashboard-nextjs
+   ```
 
 2. **Install Dependencies:**
    ```bash

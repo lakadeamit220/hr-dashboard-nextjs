@@ -25,10 +25,10 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
 
   return (
     <div className="bg-white rounded-xl shadow-card border border-gray-100 p-5 hover:shadow-card-hover transition-shadow duration-300 flex flex-col h-full">
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex gap-3 items-center">
+      <div className="flex justify-between items-start mb-4 gap-3">
+        <div className="flex gap-3 items-center min-w-0">
           {employee.avatar ? (
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gray-100 shadow-sm">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gray-100 shadow-sm flex-shrink-0">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 
@@ -37,16 +37,16 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
               />
             </div>
           ) : (
-            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold border-2 shadow-sm ${avatarColor}`}>
+            <div className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold border-2 shadow-sm flex-shrink-0 ${avatarColor}`}>
               {initials}
             </div>
           )}
           
-          <div>
-            <h3 className="font-semibold text-gray-900 text-lg line-clamp-1">
+          <div className="min-w-0">
+            <h3 className="font-semibold text-gray-900 text-lg truncate" title={fullName}>
               {fullName}
             </h3>
-            <p className="text-sm text-gray-500 line-clamp-1">{employee.designation}</p>
+            <p className="text-sm text-gray-500 truncate">{employee.designation}</p>
           </div>
         </div>
         
@@ -68,20 +68,20 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
         </div>
       </div>
       
-      <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
-        <div className="flex gap-2 items-center">
-          <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md">
+      <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
+        <div className="flex gap-2 items-center min-w-0">
+          <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md truncate" title={employee.department}>
             {employee.department}
           </span>
           {employee.documents && employee.documents.length > 0 && (
-            <span className="flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md" title={`${employee.documents.length} document(s)`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span className="flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md flex-shrink-0" title={`${employee.documents.length} document(s)`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2-2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
               {employee.documents.length}
             </span>
           )}
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-shrink-0">
           <Button 
             variant="ghost" 
             size="sm" 

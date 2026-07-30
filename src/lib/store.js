@@ -16,21 +16,24 @@ export const useStore = create((set) => ({
   departmentFilter: 'all',
   setDepartmentFilter: (department) => set({ departmentFilter: department }),
   
+  // Toast State
+  toast: { message: "", type: "success", isVisible: false },
+  showToast: (message, type = "success") => set({ toast: { message, type, isVisible: true } }),
+  hideToast: () => set((state) => ({ toast: { ...state.toast, isVisible: false } })),
+  
   // Client-side employees cache for optimistic updates
-  // Note: For full SSR Next.js apps, this is usually hydrated from props or fetched via React Query,
-  // but we'll use Zustand for client-side filtering and optimistic UI additions
   employees: [],
   setEmployees: (employees) => set({ employees }),
   
-  addOptimisticEmployee: (employee) => set((state) => ({ 
+  addEmployee: (employee) => set((state) => ({ 
     employees: [employee, ...state.employees] 
   })),
   
-  updateOptimisticEmployee: (id, data) => set((state) => ({
+  editEmployee: (id, data) => set((state) => ({
     employees: state.employees.map(emp => emp.id === id ? { ...emp, ...data } : emp)
   })),
   
-  deleteOptimisticEmployee: (id) => set((state) => ({
+  removeEmployee: (id) => set((state) => ({
     employees: state.employees.filter(emp => emp.id !== id)
   }))
 }));

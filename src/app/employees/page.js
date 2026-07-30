@@ -17,6 +17,7 @@ export default function EmployeesPage() {
   
   const setEmployees = useStore((state) => state.setEmployees);
   const employees = useStore((state) => state.employees);
+  const showToast = useStore((state) => state.showToast);
 
   // Initialize employees from server data into Zustand store on first load
   useEffect(() => {
@@ -42,8 +43,7 @@ export default function EmployeesPage() {
 
   const handleFormSuccess = (message) => {
     handleCloseModal();
-    // In Phase 6.7 we will add a toast notification here
-    console.log(message);
+    showToast(message, "success");
   };
 
   return (

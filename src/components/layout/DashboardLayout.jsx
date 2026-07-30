@@ -2,6 +2,7 @@
 
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Toast from "../ui/Toast";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -17,6 +18,7 @@ export default function DashboardLayout({ children }) {
           </div>
         </main>
       </div>
+      <Toast />
     </div>
   );
 }

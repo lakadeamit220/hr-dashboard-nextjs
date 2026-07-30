@@ -7,16 +7,17 @@ import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
 import { employeeValidationRules } from "@/lib/validation";
 import { DEPARTMENTS, STATUSES } from "@/lib/constants";
-import { createEmployee, updateEmployee } from "@/app/actions";
+import { createEmployee, updateEmployee, deleteEmployee } from "@/app/actions";
 import { useStore } from "@/lib/store";
 import { processUpload } from "@/lib/upload";
 import Image from "next/image";
-import { Upload } from "lucide-react";
+import { Upload, Trash2 } from "lucide-react";
 
 export default function EmployeeForm({ employee, onSuccess, onCancel }) {
   const isEditing = !!employee;
-  const { addEmployee, editEmployee } = useStore();
+  const { addEmployee, editEmployee, removeEmployee } = useStore();
   const [isPending, startTransition] = useTransition();
+  const [isDeleting, setIsDeleting] = useState(false);
   const [serverError, setServerError] = useState("");
   const [avatarPreview, setAvatarPreview] = useState(employee?.avatar || null);
 
@@ -49,6 +50,23 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
       } catch (err) {
         alert(err.message);
       }
+    }
+  };
+
+  const handleDelete = () => {
+    if (confirm("Are you sure you want to delete this employee? This action cannot be undone.")) {
+      setServerError("");
+      setIsDeleting(true);
+      startTransition(async () => {
+        const result = await deleteEmployee(employee.id);
+        if (result.success) {
+          removeEmployee(employee.id);
+          onSuccess && onSuccess(result.message);
+        } else {
+          setServerError(result.message);
+        }
+        setIsDeleting(false);
+      });
     }
   };
 
@@ -191,13 +209,28 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
         error={errors.address?.message}
       />
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
-        <Button variant="ghost" type="button" onClick={onCancel} disabled={isPending}>
-          Cancel
-        </Button>
-        <Button variant="primary" type="submit" isLoading={isPending}>
-          {isEditing ? "Save Changes" : "Create Employee"}
-        </Button>
+      <div className={`flex items-center pt-4 border-t border-gray-200 ${isEditing ? 'justify-between' : 'justify-end'}`}>
+        {isEditing && (
+          <Button 
+            variant="danger" 
+            type="button" 
+            leftIcon={Trash2} 
+            onClick={handleDelete}
+            isLoading={isDeleting}
+            disabled={isPending || isDeleting}
+          >
+            Delete
+          </Button>
+        )}
+        
+        <div className="flex gap-3">
+          <Button variant="ghost" type="button" onClick={onCancel} disabled={isPending || isDeleting}>
+            Cancel
+          </Button>
+          <Button variant="primary" type="submit" isLoading={isPending} disabled={isDeleting}>
+            {isEditing ? "Save Changes" : "Create Employee"}
+          </Button>
+        </div>
       </div>
     </form>
   );

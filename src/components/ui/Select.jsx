@@ -14,7 +14,7 @@ const Select = forwardRef(({
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
       {label && (
-        <label htmlFor={selectId} className="text-sm font-medium text-gray-700">
+        <label htmlFor={selectId} className="text-sm font-medium text-blue-800">
           {label}
         </label>
       )}
@@ -23,10 +23,10 @@ const Select = forwardRef(({
         ref={ref}
         id={selectId}
         className={`
-          block w-full rounded-lg border px-3 py-2 text-gray-900 shadow-sm bg-white
+          block w-full rounded-lg border px-3 py-2 text-blue-950 shadow-sm bg-transparent
           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 sm:text-sm
-          disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed transition-colors
-          ${error ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' : 'border-gray-300'}
+          disabled:bg-gray-50 disabled:text-blue-600 disabled:cursor-not-allowed transition-colors
+          ${error ? 'border-danger-300 focus:ring-danger-500 focus:border-danger-500' : 'border-blue-300'}
         `}
         {...props}
       >
@@ -39,7 +39,7 @@ const Select = forwardRef(({
       </select>
       
       {(error || helperText) && (
-        <p className={`text-xs ${error ? 'text-danger-600' : 'text-gray-500'}`}>
+        <p className={`text-xs ${error ? 'text-danger-600' : 'text-blue-600'}`}>
           {error || helperText}
         </p>
       )}

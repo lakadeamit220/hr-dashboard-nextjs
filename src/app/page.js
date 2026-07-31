@@ -26,7 +26,7 @@ export default function Home() {
     <div className="flex flex-col gap-8">
       {/* KPI Cards Section */}
       <section>
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Dashboard Overview</h2>
+        <h2 className="text-xl font-semibold text-blue-900 mb-4">Dashboard Overview</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <KpiCard 
             title="Total Employees" 

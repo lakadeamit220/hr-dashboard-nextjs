@@ -24,11 +24,11 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
   const badgeVariant = colorToVariant[statusConfig.color] || 'gray';
 
   return (
-    <div className="bg-white rounded-xl shadow-card border border-gray-100 p-5 hover:shadow-card-hover transition-shadow duration-300 flex flex-col h-full">
+    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm rounded-xl p-5 hover:shadow-card-hover transition-shadow duration-300 flex flex-col h-full">
       <div className="flex justify-between items-start mb-4 gap-3">
         <div className="flex gap-3 items-center min-w-0">
           {employee.avatar ? (
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-gray-100 shadow-sm flex-shrink-0">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-400/40 shadow-sm flex-shrink-0">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 
@@ -43,10 +43,10 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
           )}
           
           <div className="min-w-0">
-            <h3 className="font-semibold text-gray-900 text-lg truncate" title={fullName}>
+            <h3 className="font-semibold text-blue-950 text-lg truncate" title={fullName}>
               {fullName}
             </h3>
-            <p className="text-sm text-gray-500 truncate">{employee.designation}</p>
+            <p className="text-sm text-blue-600 truncate">{employee.designation}</p>
           </div>
         </div>
         
@@ -54,21 +54,21 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
       </div>
       
       <div className="mt-2 space-y-2.5 flex-1">
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <Mail size={16} className="text-gray-400 flex-shrink-0" />
+        <div className="flex items-center gap-2 text-sm text-blue-700">
+          <Mail size={16} className="text-blue-400 flex-shrink-0" />
           <span className="truncate" title={employee.email}>{employee.email}</span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <Phone size={16} className="text-gray-400 flex-shrink-0" />
+        <div className="flex items-center gap-2 text-sm text-blue-700">
+          <Phone size={16} className="text-blue-400 flex-shrink-0" />
           <span>{employee.phone}</span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <MapPin size={16} className="text-gray-400 flex-shrink-0" />
+        <div className="flex items-center gap-2 text-sm text-blue-700">
+          <MapPin size={16} className="text-blue-400 flex-shrink-0" />
           <span className="truncate">{employee.address}</span>
         </div>
       </div>
       
-      <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
+      <div className="mt-5 pt-4 border-t border-blue-400/40 flex items-center justify-between gap-2">
         <div className="flex gap-2 items-center min-w-0">
           <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md truncate" title={employee.department}>
             {employee.department}
@@ -86,7 +86,7 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
             variant="ghost" 
             size="sm" 
             onClick={() => onView && onView(employee)}
-            className="text-gray-500 hover:text-primary-600 hover:bg-primary-50"
+            className="text-blue-600 hover:text-primary-600 hover:bg-primary-50"
           >
             View
           </Button>
@@ -95,7 +95,7 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
             size="sm" 
             leftIcon={Edit2}
             onClick={() => onEdit && onEdit(employee)}
-            className="text-gray-500 hover:text-primary-600 hover:bg-primary-50"
+            className="text-blue-600 hover:text-primary-600 hover:bg-primary-50"
           >
             Edit
           </Button>

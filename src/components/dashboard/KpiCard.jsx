@@ -13,11 +13,11 @@ export default function KpiCard({ title, value, icon: Icon, trend, colorClass = 
   const selectedColor = colorStyles[colorClass] || colorStyles.primary;
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300 animate-slide-up border border-gray-100 flex items-center justify-between">
+    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm rounded-xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300 animate-slide-up border border-blue-400/40 flex items-center justify-between">
       <div className="flex flex-col gap-1">
-        <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">{title}</span>
+        <span className="text-sm font-medium text-blue-600 uppercase tracking-wide">{title}</span>
         <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-gray-900">{value}</span>
+          <span className="text-3xl font-bold text-blue-950">{value}</span>
           
           {trend && (
             <div className={`flex items-center text-sm font-medium ${trend.isPositive ? 'text-accent-600' : 'text-danger-600'}`}>

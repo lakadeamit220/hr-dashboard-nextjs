@@ -115,17 +115,17 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
 
       {/* Avatar Upload */}
       <div className="flex items-center gap-4">
-        <div className="w-16 h-16 rounded-full overflow-hidden border border-gray-200 bg-gray-100 flex items-center justify-center shrink-0">
+        <div className="w-16 h-16 rounded-full overflow-hidden border border-blue-400/40 bg-gray-100 flex items-center justify-center shrink-0">
           {avatarPreview ? (
              <Image src={avatarPreview} alt="Avatar" width={64} height={64} className="object-cover w-full h-full" />
           ) : (
-             <span className="text-gray-400 text-xs text-center px-1">No Image</span>
+             <span className="text-blue-400 text-xs text-center px-1">No Image</span>
           )}
         </div>
         <div className="flex-1">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Profile Photo</label>
+          <label className="block text-sm font-medium text-blue-800 mb-1">Profile Photo</label>
           <div className="flex items-center">
-            <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+            <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm border border-blue-300 rounded-md text-sm font-medium text-blue-800 hover:bg-white/90 transition-colors">
               <Upload size={16} />
               <span>Choose File</span>
               <input 
@@ -211,18 +211,18 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
 
       {/* Documents Section */}
       {isEditing && employee.documents && employee.documents.length > 0 && (
-        <div className="pt-4 border-t border-gray-200">
-          <h4 className="text-sm font-medium text-gray-900 mb-3">Uploaded Documents</h4>
+        <div className="pt-4 border-t border-blue-400/40">
+          <h4 className="text-sm font-medium text-blue-950 mb-3">Uploaded Documents</h4>
           <div className="space-y-2">
             {employee.documents.map(doc => (
-              <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+              <div key={doc.id} className="flex items-center justify-between p-3 bg-gray-50 border border-blue-400/40 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white rounded-md text-blue-600 border border-gray-100">
+                  <div className="p-2 bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm rounded-md text-blue-600 border border-blue-400/40">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{doc.name}</p>
-                    <p className="text-xs text-gray-500">{doc.size} • Uploaded {new Date(doc.uploadDate).toLocaleDateString()}</p>
+                    <p className="text-sm font-medium text-blue-950">{doc.name}</p>
+                    <p className="text-xs text-blue-600">{doc.size} • Uploaded {new Date(doc.uploadDate).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <Button 
@@ -249,7 +249,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
         </div>
       )}
 
-      <div className={`flex items-center pt-4 border-t border-gray-200 ${isEditing ? 'justify-between' : 'justify-end'}`}>
+      <div className={`flex items-center pt-4 border-t border-blue-400/40 ${isEditing ? 'justify-between' : 'justify-end'}`}>
         {isEditing && (
           <Button 
             variant="danger" 

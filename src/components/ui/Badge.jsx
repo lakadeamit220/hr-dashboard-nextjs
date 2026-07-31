@@ -4,7 +4,7 @@ export default function Badge({
   className = '' 
 }) {
   const variants = {
-    gray: "bg-gray-100 text-gray-700",
+    gray: "bg-gray-100 text-blue-800",
     primary: "bg-primary-50 text-primary-700",
     success: "bg-green-100 text-green-700",
     warning: "bg-amber-100 text-amber-700",

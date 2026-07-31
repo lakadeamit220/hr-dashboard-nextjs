@@ -28,7 +28,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center gap-3">
           {employee.avatar ? (
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-200 shadow-sm">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-blue-400/40 shadow-sm">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 
@@ -42,19 +42,19 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             </div>
           )}
           <div>
-            <div className="font-medium text-gray-900">
+            <div className="font-medium text-blue-950">
               {fullName}
             </div>
-            <div className="text-sm text-gray-500">{employee.email}</div>
+            <div className="text-sm text-blue-600">{employee.email}</div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{employee.designation}</div>
-        <div className="text-sm text-gray-500">{employee.department}</div>
+        <div className="text-sm text-blue-950">{employee.designation}</div>
+        <div className="text-sm text-blue-600">{employee.department}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-gray-900">{employee.phone}</div>
+        <div className="text-sm text-blue-950">{employee.phone}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <Badge variant={badgeVariant}>{statusConfig.label}</Badge>
@@ -71,7 +71,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             variant="ghost" 
             size="sm"
             onClick={() => onView && onView(employee)}
-            className="text-gray-500 hover:text-primary-600"
+            className="text-blue-600 hover:text-primary-600"
           >
             View
           </Button>
@@ -80,7 +80,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             size="sm" 
             leftIcon={Edit2}
             onClick={() => onEdit && onEdit(employee)}
-            className="text-gray-400 hover:text-primary-600"
+            className="text-blue-400 hover:text-primary-600"
           >
             Edit
           </Button>

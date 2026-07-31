@@ -29,7 +29,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
           </h3>
           <button
             onClick={onClose}
-            className="text-slate-400 bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm hover:bg-slate-50/50 hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center transition-colors"
+            className="text-slate-400 bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm hover:bg-slate-50/50 hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center transition-colors cursor-pointer"
           >
             <X size={20} />
           </button>

@@ -115,7 +115,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
 
       {/* Avatar Upload */}
       <div className="flex items-center gap-4">
-        <div className="w-16 h-16 rounded-full overflow-hidden border border-slate-200 bg-slate-100/50 flex items-center justify-center shrink-0">
+        <div className="w-16 h-16 rounded-full overflow-hidden border border-slate-300/70 bg-slate-100/50 flex items-center justify-center shrink-0">
           {avatarPreview ? (
              <Image src={avatarPreview} alt="Avatar" width={64} height={64} className="object-cover w-full h-full" />
           ) : (
@@ -125,7 +125,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
         <div className="flex-1">
           <label className="block text-sm font-medium text-slate-700 mb-1">Profile Photo</label>
           <div className="flex items-center">
-            <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 shadow-sm border border-slate-200 rounded-md text-sm font-medium text-slate-700 hover:bg-white/90 transition-colors">
+            <label className="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm border border-slate-300/70 rounded-md text-sm font-medium text-slate-700 hover:bg-white/5 backdrop-blur-[2px]/90 transition-colors">
               <Upload size={16} />
               <span>Choose File</span>
               <input 
@@ -211,13 +211,13 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
 
       {/* Documents Section */}
       {isEditing && employee.documents && employee.documents.length > 0 && (
-        <div className="pt-4 border-t border-slate-200">
+        <div className="pt-4 border-t border-slate-300/70">
           <h4 className="text-sm font-medium text-slate-900 mb-3">Uploaded Documents</h4>
           <div className="space-y-2">
             {employee.documents.map(doc => (
-              <div key={doc.id} className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg">
+              <div key={doc.id} className="flex items-center justify-between p-3 bg-slate-50/50 border border-slate-300/70 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white border border-slate-200 shadow-sm rounded-md text-slate-500 border border-slate-200">
+                  <div className="p-2 bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-md text-slate-500 border border-slate-300/70">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                   </div>
                   <div>
@@ -249,7 +249,7 @@ export default function EmployeeForm({ employee, onSuccess, onCancel }) {
         </div>
       )}
 
-      <div className={`flex items-center pt-4 border-t border-slate-200 ${isEditing ? 'justify-between' : 'justify-end'}`}>
+      <div className={`flex items-center pt-4 border-t border-slate-300/70 ${isEditing ? 'justify-between' : 'justify-end'}`}>
         {isEditing && (
           <Button 
             variant="danger" 

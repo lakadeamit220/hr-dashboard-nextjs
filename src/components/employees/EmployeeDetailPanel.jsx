@@ -18,7 +18,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
   return (
     <div className="space-y-6">
       {/* Header Profile Section */}
-      <div className="flex items-center gap-5 pb-6 border-b border-slate-200">
+      <div className="flex items-center gap-5 pb-6 border-b border-slate-300/70">
         {employee.avatar ? (
           <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
             <Image 
@@ -96,13 +96,13 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
       </div>
 
       {/* Documents Section */}
-      <div className="pt-6 border-t border-slate-200">
+      <div className="pt-6 border-t border-slate-300/70">
         <h3 className="text-lg font-semibold text-slate-900 mb-4">Documents</h3>
         {employee.documents && employee.documents.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {employee.documents.map(doc => (
-              <div key={doc.id} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-slate-200 shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 shrink-0">
+              <div key={doc.id} className="flex items-center gap-3 p-3 bg-slate-50/50 rounded-lg border border-slate-300/70">
+                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm border border-slate-300/70 flex items-center justify-center text-slate-500 shrink-0">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -126,14 +126,14 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-slate-500 italic bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
+          <p className="text-sm text-slate-500 italic bg-slate-50/50 p-4 rounded-lg text-center border border-slate-300/70">
             No documents uploaded yet.
           </p>
         )}
       </div>
 
       {/* Actions */}
-      <div className="flex justify-end gap-3 pt-6 border-t border-slate-200">
+      <div className="flex justify-end gap-3 pt-6 border-t border-slate-300/70">
         <Button variant="ghost" onClick={onClose}>
           Close
         </Button>

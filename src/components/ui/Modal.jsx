@@ -19,17 +19,17 @@ export default function Modal({ isOpen, onClose, title, children }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-gray-900/50 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-xl shadow-2xl flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-white/40 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl shadow-2xl flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-slate-200">
+        <div className="flex items-center justify-between p-5 border-b border-slate-300/70">
           <h3 className="text-xl font-semibold text-slate-900">
             {title}
           </h3>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:bg-slate-100 hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center transition-colors"
+            className="text-slate-400 bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm hover:bg-slate-50/50 hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center transition-colors"
           >
             <X size={20} />
           </button>

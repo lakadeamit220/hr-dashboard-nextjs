@@ -12,7 +12,6 @@ import { useStore } from "@/lib/store";
 import { getAllEmployees } from "@/lib/data";
 
 export default function EmployeesPage() {
-  const [viewMode, setViewMode] = useState("grid"); // 'grid' or 'list'
   
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,13 +108,10 @@ export default function EmployeesPage() {
       </div>
       
       <EmployeeFilters 
-        viewMode={viewMode} 
-        setViewMode={setViewMode} 
         onAdd={handleAddEmployee} 
       />
       
       <EmployeeList 
-        viewMode={viewMode} 
         onEdit={handleEditEmployee}
         onView={handleViewEmployee}
         onDelete={handleDeleteClick}

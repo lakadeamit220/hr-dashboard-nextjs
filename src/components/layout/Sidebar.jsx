@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Users, Menu, X, User } from "lucide-react";
+import { Home, Users, Menu, X, User, Network } from "lucide-react";
 import { useStore } from "@/lib/store";
 
 const navItems = [
   { name: "Dashboard", href: "/", icon: Home },
   { name: "Employees", href: "/employees", icon: Users },
+  { name: "Org Chart", href: "/org-chart", icon: Network },
 ];
 
 export default function Sidebar() {

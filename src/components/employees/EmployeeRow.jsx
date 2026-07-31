@@ -1,9 +1,10 @@
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2, Eye } from "lucide-react";
 import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
 import { getAvatarColorClass } from "@/lib/utils";
+import Link from "next/link";
 
 export default function EmployeeRow({ employee, onEdit, onView, onDelete }) {
   // Get Initials
@@ -66,8 +67,18 @@ export default function EmployeeRow({ employee, onEdit, onView, onDelete }) {
         )}
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-        <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center justify-end gap-2 transition-opacity">
           
+          <Link href={`/employees/${employee.id}`} passHref>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-slate-400 hover:text-blue-600 px-2"
+              title="View Details"
+            >
+              <Eye size={16} />
+            </Button>
+          </Link>
           <Button 
             variant="ghost" 
             size="sm" 

@@ -83,3 +83,75 @@ export function getNewJoinersCount() {
     return joinDate.getMonth() === currentMonth && joinDate.getFullYear() === currentYear;
   }).length;
 }
+
+export function getUpcomingEvents() {
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentDate = today.getDate();
+
+  const events = [];
+
+  employees.forEach(emp => {
+    if (emp.dateOfBirth) {
+      const dob = new Date(emp.dateOfBirth);
+      if (dob.getMonth() === currentMonth && dob.getDate() >= currentDate) {
+        events.push({
+          id: `bday-${emp.id}`,
+          type: 'birthday',
+          employeeName: `${emp.firstName} ${emp.lastName}`,
+          date: emp.dateOfBirth,
+          day: dob.getDate(),
+          avatar: emp.avatar
+        });
+      }
+    }
+    if (emp.joiningDate) {
+      const join = new Date(emp.joiningDate);
+      if (join.getMonth() === currentMonth && join.getDate() >= currentDate && join.getFullYear() < today.getFullYear()) {
+        const years = today.getFullYear() - join.getFullYear();
+        events.push({
+          id: `anniv-${emp.id}`,
+          type: 'anniversary',
+          employeeName: `${emp.firstName} ${emp.lastName}`,
+          date: emp.joiningDate,
+          day: join.getDate(),
+          years: years,
+          avatar: emp.avatar
+        });
+      }
+    }
+  });
+
+  // Sort by day of month ascending
+  events.sort((a, b) => a.day - b.day);
+  return events.slice(0, 5);
+}
+
+export function getHeadcountGrowth() {
+  // Sort employees by joining date
+  const sorted = [...employees].sort((a, b) => new Date(a.joiningDate) - new Date(b.joiningDate));
+  
+  const history = [];
+  let currentCount = 0;
+  
+  sorted.forEach(emp => {
+    const d = new Date(emp.joiningDate);
+    const monthYear = `${d.toLocaleString('default', { month: 'short' })} ${d.getFullYear()}`;
+    
+    // Find if we already have an entry for this month
+    const existing = history.find(h => h.month === monthYear);
+    
+    currentCount++;
+    
+    if (existing) {
+      existing.headcount = currentCount;
+    } else {
+      history.push({
+        month: monthYear,
+        headcount: currentCount
+      });
+    }
+  });
+  
+  return history;
+}

@@ -3,14 +3,17 @@ import {
   getStatusCounts, 
   getNewJoinersCount,
   getDepartmentDistribution,
-  getPerformanceDistribution
+  getPerformanceDistribution,
+  getUpcomingEvents,
+  getHeadcountGrowth
 } from "@/lib/data";
 
 import KpiCard from "@/components/dashboard/KpiCard";
 import DepartmentChart from "@/components/charts/DepartmentChart";
 import PerformanceChart from "@/components/charts/PerformanceChart";
-import { Users, UserCheck, CalendarOff, UserPlus, ArrowRight, Clock, Plus, Download, Settings } from "lucide-react";
-import Link from "next/link";
+import HeadcountChart from "@/components/charts/HeadcountChart";
+import UpcomingEvents from "@/components/dashboard/UpcomingEvents";
+import { Users, UserCheck, CalendarOff, UserPlus } from "lucide-react";
 
 export default function Home() {
   // Fetch data
@@ -19,6 +22,8 @@ export default function Home() {
   const newJoiners = getNewJoinersCount();
   const departmentData = getDepartmentDistribution();
   const performanceData = getPerformanceDistribution();
+  const upcomingEvents = getUpcomingEvents();
+  const headcountData = getHeadcountGrowth();
   
   return (
     <div className="flex flex-col gap-8">
@@ -54,10 +59,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Charts Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <DepartmentChart data={departmentData} />
-        <PerformanceChart data={performanceData} />
+      {/* Main Charts & Widgets Section */}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        {/* Left Column - Takes 2/3 width */}
+        <div className="lg:col-span-2 flex flex-col gap-6">
+          <HeadcountChart data={headcountData} />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <DepartmentChart data={departmentData} />
+            <PerformanceChart data={performanceData} />
+          </div>
+        </div>
+
+        {/* Right Column - Takes 1/3 width */}
+        <div className="lg:col-span-1">
+          <UpcomingEvents events={upcomingEvents} />
+        </div>
+        
       </section>
     </div>
   );

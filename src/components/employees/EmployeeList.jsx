@@ -1,14 +1,13 @@
 "use client";
 
 import { useStore } from "@/lib/store";
-import EmployeeCard from "./EmployeeCard";
 import EmployeeRow from "./EmployeeRow";
 import EmployeeSkeleton from "./EmployeeSkeleton";
 import { Inbox, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 
-export default function EmployeeList({ viewMode, onEdit, onView, onDelete, isLoading }) {
+export default function EmployeeList({ onEdit, onView, onDelete, isLoading }) {
   const employees = useStore((state) => state.employees);
   const searchQuery = useStore((state) => state.searchQuery);
   const statusFilter = useStore((state) => state.statusFilter);
@@ -24,7 +23,7 @@ export default function EmployeeList({ viewMode, onEdit, onView, onDelete, isLoa
   }, [searchQuery, statusFilter, departmentFilter]);
 
   if (isLoading) {
-    return <EmployeeSkeleton viewMode={viewMode} />;
+    return <EmployeeSkeleton viewMode="list" />;
   }
 
   const filteredEmployees = employees.filter((emp) => {
@@ -66,46 +65,32 @@ export default function EmployeeList({ viewMode, onEdit, onView, onDelete, isLoa
 
   return (
     <>
-      {viewMode === "grid" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-in fade-in duration-300">
-          {paginatedEmployees.map((employee) => (
-            <EmployeeCard 
-              key={employee.id} 
-              employee={employee} 
-              onEdit={onEdit} 
-              onView={onView}
-              onDelete={onDelete}
-            />
-          ))}
+      <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl overflow-hidden animate-in fade-in duration-300">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-slate-50/50 border-b border-slate-300/70 text-xs uppercase tracking-wider text-slate-500">
+                <th className="px-6 py-4 font-semibold">Employee</th>
+                <th className="px-6 py-4 font-semibold">Role & Dept</th>
+                <th className="px-6 py-4 font-semibold">Phone</th>
+                <th className="px-6 py-4 font-semibold">Status</th>
+                <th className="px-6 py-4 font-semibold text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {paginatedEmployees.map((employee) => (
+                <EmployeeRow 
+                  key={employee.id} 
+                  employee={employee} 
+                  onEdit={onEdit} 
+                  onView={onView}
+                  onDelete={onDelete}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
-      ) : (
-        <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl overflow-hidden animate-in fade-in duration-300">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-slate-50/50 border-b border-slate-300/70 text-xs uppercase tracking-wider text-slate-500">
-                  <th className="px-6 py-4 font-semibold">Employee</th>
-                  <th className="px-6 py-4 font-semibold">Role & Dept</th>
-                  <th className="px-6 py-4 font-semibold">Phone</th>
-                  <th className="px-6 py-4 font-semibold">Status</th>
-                  <th className="px-6 py-4 font-semibold text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {paginatedEmployees.map((employee) => (
-                  <EmployeeRow 
-                    key={employee.id} 
-                    employee={employee} 
-                    onEdit={onEdit} 
-                    onView={onView}
-                    onDelete={onDelete}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      </div>
 
       {totalPages > 1 && (
         <div className="flex items-center justify-between border-t border-slate-300/70 pt-4 mt-6">

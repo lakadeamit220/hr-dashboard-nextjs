@@ -24,11 +24,11 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
   const badgeVariant = colorToVariant[statusConfig.color] || 'gray';
 
   return (
-    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm rounded-xl p-5 hover:shadow-card-hover transition-shadow duration-300 flex flex-col h-full">
+    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm rounded-xl p-5 hover:shadow-card-hover transition-shadow duration-300 flex flex-col h-full">
       <div className="flex justify-between items-start mb-4 gap-3">
         <div className="flex gap-3 items-center min-w-0">
           {employee.avatar ? (
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-400/40 shadow-sm flex-shrink-0">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-blue-300 shadow-sm flex-shrink-0">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 
@@ -68,7 +68,7 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
         </div>
       </div>
       
-      <div className="mt-5 pt-4 border-t border-blue-400/40 flex items-center justify-between gap-2">
+      <div className="mt-5 pt-4 border-t border-blue-300 flex items-center justify-between gap-2">
         <div className="flex gap-2 items-center min-w-0">
           <span className="text-sm font-medium text-primary-600 bg-primary-50 px-2.5 py-1 rounded-md truncate" title={employee.department}>
             {employee.department}

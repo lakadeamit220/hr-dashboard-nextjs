@@ -15,7 +15,7 @@ export default function Header() {
   }
 
   return (
-    <header className="h-16 bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm border-b border-blue-400/40 flex items-center justify-between px-4 sm:px-6 z-10 sticky top-0">
+    <header className="h-16 bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm border-b border-blue-300 flex items-center justify-between px-4 sm:px-6 z-10 sticky top-0">
       <div className="flex items-center gap-4">
         <button 
           onClick={toggleSidebar}

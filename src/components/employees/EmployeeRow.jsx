@@ -28,7 +28,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center gap-3">
           {employee.avatar ? (
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-blue-400/40 shadow-sm">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-blue-300 shadow-sm">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 

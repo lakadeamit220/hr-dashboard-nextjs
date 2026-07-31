@@ -18,7 +18,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
   return (
     <div className="space-y-6">
       {/* Header Profile Section */}
-      <div className="flex items-center gap-5 pb-6 border-b border-blue-400/40">
+      <div className="flex items-center gap-5 pb-6 border-b border-blue-300">
         {employee.avatar ? (
           <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
             <Image 
@@ -96,13 +96,13 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
       </div>
 
       {/* Documents Section */}
-      <div className="pt-6 border-t border-blue-400/40">
+      <div className="pt-6 border-t border-blue-300">
         <h3 className="text-lg font-semibold text-blue-950 mb-4">Documents</h3>
         {employee.documents && employee.documents.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {employee.documents.map(doc => (
-              <div key={doc.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-blue-400/40">
-                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm border border-blue-400/40 flex items-center justify-center text-blue-600 shrink-0">
+              <div key={doc.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-blue-300">
+                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm border border-blue-300 flex items-center justify-center text-blue-600 shrink-0">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -126,14 +126,14 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-blue-600 italic bg-gray-50 p-4 rounded-lg text-center border border-blue-400/40">
+          <p className="text-sm text-blue-600 italic bg-gray-50 p-4 rounded-lg text-center border border-blue-300">
             No documents uploaded yet.
           </p>
         )}
       </div>
 
       {/* Actions */}
-      <div className="flex justify-end gap-3 pt-6 border-t border-blue-400/40">
+      <div className="flex justify-end gap-3 pt-6 border-t border-blue-300">
         <Button variant="ghost" onClick={onClose}>
           Close
         </Button>

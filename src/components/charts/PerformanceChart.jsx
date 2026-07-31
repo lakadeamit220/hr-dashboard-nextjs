@@ -28,7 +28,7 @@ export default function PerformanceChart({ data }) {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm p-3 rounded-lg text-sm">
+        <div className="bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm p-3 rounded-lg text-sm">
           <p className="font-semibold text-blue-900 mb-1">{label}</p>
           <p className="text-blue-700">
             <span className="font-medium text-blue-950">{payload[0].value}</span>{" "}
@@ -41,7 +41,7 @@ export default function PerformanceChart({ data }) {
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm rounded-xl p-6 flex flex-col h-full animate-fade-in" style={{ animationDelay: '100ms' }}>
+    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm rounded-xl p-6 flex flex-col h-full animate-fade-in" style={{ animationDelay: '100ms' }}>
       <h3 className="text-lg font-semibold text-blue-900 mb-6">Performance Ratings</h3>
       
       <div className="flex-1 w-full min-h-[300px]">

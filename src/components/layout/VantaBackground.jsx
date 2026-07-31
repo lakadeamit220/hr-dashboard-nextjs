@@ -28,7 +28,7 @@ export default function VantaBackground() {
           color: 0x3b82f6,
           color2: 0x2563eb,
           backgroundColor: 0xf8fafc,
-          size: 0.7
+          size: 0.5
         });
         
         // Restore it just in case

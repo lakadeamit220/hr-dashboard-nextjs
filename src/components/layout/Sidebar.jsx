@@ -26,12 +26,12 @@ export default function Sidebar() {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white/5 backdrop-blur-[2px] border border-blue-400/40 shadow-sm border-r border-blue-400/40 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm border-r border-blue-300 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } flex flex-col`}
       >
         {/* Logo Area */}
-        <div className="h-16 flex items-center px-6 border-b border-blue-400/40">
+        <div className="h-16 flex items-center px-6 border-b border-blue-300">
           <div className="flex items-center gap-2 text-primary-600 font-bold text-xl">
             <div className="w-8 h-8 rounded-lg bg-primary-600 text-white flex items-center justify-center">
               <Users size={18} />
@@ -70,7 +70,7 @@ export default function Sidebar() {
         </nav>
 
         {/* User Profile */}
-        <div className="p-4 border-t border-blue-400/40">
+        <div className="p-4 border-t border-blue-300">
           <div className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
             <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-blue-700">
               <User size={18} />

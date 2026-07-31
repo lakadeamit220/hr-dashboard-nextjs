@@ -3,13 +3,9 @@ import Button from "@/components/ui/Button";
 import { Edit2, Mail, Phone, MapPin } from "lucide-react";
 import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
-import { getAvatarColorClass } from "@/lib/utils";
 
 export default function EmployeeCard({ employee, onEdit, onView }) {
-  // Get Initials
-  const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
   const fullName = `${employee.firstName} ${employee.lastName}`;
-  const avatarColor = getAvatarColorClass(fullName);
   
   // Find status config to get the correct color mapping
   const statusConfig = STATUSES.find(s => s.value === employee.status) || STATUSES[0];

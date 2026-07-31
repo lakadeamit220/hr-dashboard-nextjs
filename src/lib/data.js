@@ -1,4 +1,4 @@
-import { initialEmployees, attendanceData } from './mock-data';
+import { initialEmployees } from './mock-data';
 
 // In-memory store (module-level variable for demo purposes)
 let employees = [...initialEmployees];
@@ -82,8 +82,4 @@ export function getNewJoinersCount() {
     const joinDate = new Date(emp.joiningDate);
     return joinDate.getMonth() === currentMonth && joinDate.getFullYear() === currentYear;
   }).length;
-}
-
-export function getAttendanceData() {
-  return [...attendanceData];
 }

@@ -1,7 +1,6 @@
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import { STATUSES } from "@/lib/constants";
-import { getAvatarColorClass } from "@/lib/utils";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Briefcase, Calendar, Star, FileText, Edit2 } from "lucide-react";
 
@@ -9,8 +8,6 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
   if (!employee) return null;
 
   const fullName = `${employee.firstName} ${employee.lastName}`;
-  const avatarColor = getAvatarColorClass(fullName);
-  const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
   const statusConfig = STATUSES.find(s => s.value === employee.status) || STATUSES[0];
   const colorToVariant = { green: 'success', amber: 'warning', orange: 'warning', red: 'danger' };
   const badgeVariant = colorToVariant[statusConfig.color] || 'gray';
@@ -19,7 +16,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
     <div className="space-y-6">
       {/* Header Profile Section */}
       <div className="flex items-center gap-5 pb-6 border-b border-slate-300/70">
-        {employee.avatar ? (
+        {employee.avatar && (
           <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
             <Image 
               src={employee.avatar} 
@@ -27,10 +24,6 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
               fill
               className="object-cover"
             />
-          </div>
-        ) : (
-          <div className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold border-4 border-white shadow-md ${avatarColor}`}>
-            {initials}
           </div>
         )}
         

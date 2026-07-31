@@ -402,18 +402,3 @@ export const initialEmployees = [
     address: "Bavdhan, Pune"
   }
 ];
-
-export const attendanceData = [
-  { month: 'Aug 2025', present: 92, absent: 8 },
-  { month: 'Sep 2025', present: 88, absent: 12 },
-  { month: 'Oct 2025', present: 95, absent: 5 },
-  { month: 'Nov 2025', present: 90, absent: 10 },
-  { month: 'Dec 2025', present: 85, absent: 15 },
-  { month: 'Jan 2026', present: 93, absent: 7 },
-  { month: 'Feb 2026', present: 96, absent: 4 },
-  { month: 'Mar 2026', present: 94, absent: 6 },
-  { month: 'Apr 2026', present: 91, absent: 9 },
-  { month: 'May 2026', present: 89, absent: 11 },
-  { month: 'Jun 2026', present: 95, absent: 5 },
-  { month: 'Jul 2026', present: 97, absent: 3 },
-];

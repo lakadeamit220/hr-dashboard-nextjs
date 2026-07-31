@@ -31,7 +31,7 @@ export default function HeadcountChart({ data }) {
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl p-5 h-96 flex flex-col">
+    <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl p-5 h-full flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <h3 className="font-semibold text-slate-800 flex items-center gap-2">
           <TrendingUp size={18} className="text-primary-600" />

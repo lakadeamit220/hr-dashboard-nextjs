@@ -60,21 +60,22 @@ export default function Home() {
       </section>
 
       {/* Main Charts & Widgets Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <section className="flex flex-col gap-6">
         
-        {/* Left Column - Takes 2/3 width */}
-        <div className="lg:col-span-2 flex flex-col gap-6">
-          <HeadcountChart data={headcountData} />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <DepartmentChart data={departmentData} />
-            <PerformanceChart data={performanceData} />
-          </div>
+        {/* Top Row: Department and Performance */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <DepartmentChart data={departmentData} />
+          <PerformanceChart data={performanceData} />
         </div>
 
-        {/* Right Column - Takes 1/3 width */}
-        <div className="lg:col-span-1">
-          <UpcomingEvents events={upcomingEvents} />
+        {/* Bottom Row: Headcount and Upcoming Events */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 h-[400px]">
+            <HeadcountChart data={headcountData} />
+          </div>
+          <div className="lg:col-span-1 h-[400px]">
+            <UpcomingEvents events={upcomingEvents} />
+          </div>
         </div>
         
       </section>

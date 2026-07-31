@@ -86,35 +86,57 @@ export function getNewJoinersCount() {
 
 export function getUpcomingEvents() {
   const today = new Date();
-  const currentMonth = today.getMonth();
-  const currentDate = today.getDate();
+  today.setHours(0, 0, 0, 0); // Normalize today to midnight for fair comparison
+  
+  const next30Days = new Date(today);
+  next30Days.setDate(today.getDate() + 30);
 
   const events = [];
 
   employees.forEach(emp => {
+    // Check Birthday
     if (emp.dateOfBirth) {
       const dob = new Date(emp.dateOfBirth);
-      if (dob.getMonth() === currentMonth && dob.getDate() >= currentDate) {
+      // Create a Date object for this year's birthday
+      let thisYearBday = new Date(today.getFullYear(), dob.getMonth(), dob.getDate());
+      
+      // If the birthday has already passed this year, look at next year's
+      if (thisYearBday < today) {
+        thisYearBday.setFullYear(today.getFullYear() + 1);
+      }
+      
+      // If it falls within the next 30 days
+      if (thisYearBday >= today && thisYearBday <= next30Days) {
         events.push({
           id: `bday-${emp.id}`,
           type: 'birthday',
           employeeName: `${emp.firstName} ${emp.lastName}`,
-          date: emp.dateOfBirth,
-          day: dob.getDate(),
+          date: thisYearBday,
+          daysFromNow: Math.floor((thisYearBday - today) / (1000 * 60 * 60 * 24)),
           avatar: emp.avatar
         });
       }
     }
+    
+    // Check Work Anniversary
     if (emp.joiningDate) {
       const join = new Date(emp.joiningDate);
-      if (join.getMonth() === currentMonth && join.getDate() >= currentDate && join.getFullYear() < today.getFullYear()) {
-        const years = today.getFullYear() - join.getFullYear();
+      let thisYearAnniv = new Date(today.getFullYear(), join.getMonth(), join.getDate());
+      
+      // If anniversary passed this year, look at next year
+      if (thisYearAnniv < today) {
+        thisYearAnniv.setFullYear(today.getFullYear() + 1);
+      }
+      
+      // If it falls within the next 30 days and they've been here at least a year
+      if (thisYearAnniv >= today && thisYearAnniv <= next30Days && join.getFullYear() < thisYearAnniv.getFullYear()) {
+        const years = thisYearAnniv.getFullYear() - join.getFullYear();
         events.push({
           id: `anniv-${emp.id}`,
           type: 'anniversary',
           employeeName: `${emp.firstName} ${emp.lastName}`,
-          date: emp.joiningDate,
-          day: join.getDate(),
+          date: thisYearAnniv,
+          daysFromNow: Math.floor((thisYearAnniv - today) / (1000 * 60 * 60 * 24)),
           years: years,
           avatar: emp.avatar
         });
@@ -122,8 +144,8 @@ export function getUpcomingEvents() {
     }
   });
 
-  // Sort by day of month ascending
-  events.sort((a, b) => a.day - b.day);
+  // Sort by how soon it is
+  events.sort((a, b) => a.daysFromNow - b.daysFromNow);
   return events.slice(0, 5);
 }
 

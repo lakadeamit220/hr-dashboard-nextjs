@@ -1,11 +1,11 @@
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { Edit2, MoreVertical } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
 import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
 import { getAvatarColorClass } from "@/lib/utils";
 
-export default function EmployeeRow({ employee, onEdit, onView }) {
+export default function EmployeeRow({ employee, onEdit, onView, onDelete }) {
   // Get Initials
   const initials = `${employee.firstName.charAt(0)}${employee.lastName.charAt(0)}`.toUpperCase();
   const fullName = `${employee.firstName} ${employee.lastName}`;
@@ -67,14 +67,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
       </td>
       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
         <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            onClick={() => onView && onView(employee)}
-            className="text-slate-500 hover:text-primary-600"
-          >
-            View
-          </Button>
+          
           <Button 
             variant="ghost" 
             size="sm" 
@@ -84,6 +77,16 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
           >
             Edit
           </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => onDelete && onDelete(employee)}
+            className="text-slate-400 hover:text-danger-600 px-2"
+            title="Delete Employee"
+          >
+            <Trash2 size={16} />
+          </Button>
+
         </div>
       </td>
     </tr>

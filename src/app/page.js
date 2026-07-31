@@ -9,7 +9,8 @@ import {
 import KpiCard from "@/components/dashboard/KpiCard";
 import DepartmentChart from "@/components/charts/DepartmentChart";
 import PerformanceChart from "@/components/charts/PerformanceChart";
-import { Users, UserCheck, CalendarOff, UserPlus } from "lucide-react";
+import { Users, UserCheck, CalendarOff, UserPlus, ArrowRight, Clock, Plus, Download, Settings } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   // Fetch data

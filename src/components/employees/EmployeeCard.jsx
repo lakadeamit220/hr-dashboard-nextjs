@@ -1,10 +1,10 @@
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import { Edit2, Mail, Phone, MapPin } from "lucide-react";
+import { Edit2, Mail, Phone, MapPin, Trash2 } from "lucide-react";
 import { STATUSES } from "@/lib/constants";
 import Image from "next/image";
 
-export default function EmployeeCard({ employee, onEdit, onView }) {
+export default function EmployeeCard({ employee, onEdit, onView, onDelete }) {
   const fullName = `${employee.firstName} ${employee.lastName}`;
   
   // Find status config to get the correct color mapping
@@ -61,23 +61,26 @@ export default function EmployeeCard({ employee, onEdit, onView }) {
         </div>
         
         <div className="flex gap-2 flex-shrink-0">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => onView && onView(employee)}
-            className="text-slate-500 hover:text-primary-600 hover:bg-primary-50"
-          >
-            View
-          </Button>
+          
           <Button 
             variant="ghost" 
             size="sm" 
             leftIcon={Edit2}
             onClick={() => onEdit && onEdit(employee)}
-            className="text-slate-500 hover:text-primary-600 hover:bg-primary-50"
+            className="flex-1 text-slate-500 hover:text-primary-600"
           >
             Edit
           </Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => onDelete && onDelete(employee)}
+            className="text-slate-400 hover:text-danger-600 px-2"
+            title="Delete Employee"
+          >
+            <Trash2 size={16} />
+          </Button>
+
         </div>
       </div>
     </div>

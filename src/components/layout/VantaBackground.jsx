@@ -9,10 +9,6 @@ export default function VantaBackground() {
   const myRef = useRef(null);
 
   useEffect(() => {
-    // Disable on mobile devices for better performance
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return;
-    }
 
     if (!vantaEffect && scriptLoaded && window.VANTA && window.THREE && myRef.current) {
       try {

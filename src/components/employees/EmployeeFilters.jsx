@@ -28,7 +28,7 @@ export default function EmployeeFilters({ viewMode, setViewMode, onAdd }) {
   ];
 
   return (
-    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm rounded-xl p-4 mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+    <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl p-4 mb-6 flex flex-col md:flex-row gap-4 items-center justify-between">
       
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-1">
@@ -60,13 +60,13 @@ export default function EmployeeFilters({ viewMode, setViewMode, onAdd }) {
 
       {/* Actions & View Toggle */}
       <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
-        <div className="flex items-center bg-gray-100 p-1 rounded-lg border border-blue-300">
+        <div className="flex items-center bg-slate-100/50 p-1 rounded-lg border border-slate-300/70">
           <button
             onClick={() => setViewMode('grid')}
             className={`p-1.5 rounded-md transition-colors ${
               viewMode === 'grid' 
                 ? 'bg-white shadow-sm text-primary-600' 
-                : 'text-blue-600 hover:text-blue-800'
+                : 'text-slate-500 hover:text-slate-700'
             }`}
             title="Grid View"
           >
@@ -77,7 +77,7 @@ export default function EmployeeFilters({ viewMode, setViewMode, onAdd }) {
             className={`p-1.5 rounded-md transition-colors ${
               viewMode === 'list' 
                 ? 'bg-white shadow-sm text-primary-600' 
-                : 'text-blue-600 hover:text-blue-800'
+                : 'text-slate-500 hover:text-slate-700'
             }`}
             title="List View"
           >

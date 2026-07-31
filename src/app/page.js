@@ -3,14 +3,12 @@ import {
   getStatusCounts, 
   getNewJoinersCount,
   getDepartmentDistribution,
-  getPerformanceDistribution,
-  getAttendanceData
+  getPerformanceDistribution
 } from "@/lib/data";
 
 import KpiCard from "@/components/dashboard/KpiCard";
 import DepartmentChart from "@/components/charts/DepartmentChart";
 import PerformanceChart from "@/components/charts/PerformanceChart";
-import AttendanceChart from "@/components/charts/AttendanceChart";
 import { Users, UserCheck, CalendarOff, UserPlus } from "lucide-react";
 
 export default function Home() {
@@ -20,13 +18,12 @@ export default function Home() {
   const newJoiners = getNewJoinersCount();
   const departmentData = getDepartmentDistribution();
   const performanceData = getPerformanceDistribution();
-  const attendanceData = getAttendanceData();
   
   return (
     <div className="flex flex-col gap-8">
       {/* KPI Cards Section */}
       <section>
-        <h2 className="text-xl font-semibold text-blue-900 mb-4">Dashboard Overview</h2>
+        <h2 className="text-xl font-semibold text-slate-800 mb-4">Dashboard Overview</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <KpiCard 
             title="Total Employees" 
@@ -56,15 +53,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Charts Section - Row 1 */}
+      {/* Charts Section */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <DepartmentChart data={departmentData} />
         <PerformanceChart data={performanceData} />
-      </section>
-      
-      {/* Charts Section - Row 2 */}
-      <section>
-        <AttendanceChart data={attendanceData} />
       </section>
     </div>
   );

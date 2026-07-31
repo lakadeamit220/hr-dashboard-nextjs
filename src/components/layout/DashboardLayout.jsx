@@ -7,7 +7,7 @@ import VantaBackground from "./VantaBackground";
 
 export default function DashboardLayout({ children }) {
   return (
-    <div className="flex h-screen overflow-hidden text-blue-950 bg-transparent relative">
+    <div className="flex h-screen overflow-hidden text-slate-900 bg-transparent relative">
       <VantaBackground />
       
       <div className="relative z-10 flex w-full h-full">

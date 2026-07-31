@@ -18,7 +18,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
   return (
     <div className="space-y-6">
       {/* Header Profile Section */}
-      <div className="flex items-center gap-5 pb-6 border-b border-blue-300">
+      <div className="flex items-center gap-5 pb-6 border-b border-slate-200">
         {employee.avatar ? (
           <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
             <Image 
@@ -35,7 +35,7 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
         )}
         
         <div className="flex-1">
-          <h2 className="text-2xl font-bold text-blue-950">{fullName}</h2>
+          <h2 className="text-2xl font-bold text-slate-900">{fullName}</h2>
           <p className="text-primary-600 font-medium">{employee.designation}</p>
           <div className="mt-2 flex gap-2">
             <Badge variant={badgeVariant}>{statusConfig.label}</Badge>
@@ -47,67 +47,67 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
       {/* Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
         <div className="flex items-start gap-3">
-          <Mail className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <Mail className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Email Address</p>
-            <p className="text-sm text-blue-600">{employee.email}</p>
+            <p className="text-sm font-medium text-slate-900">Email Address</p>
+            <p className="text-sm text-slate-500">{employee.email}</p>
           </div>
         </div>
         
         <div className="flex items-start gap-3">
-          <Phone className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <Phone className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Phone Number</p>
-            <p className="text-sm text-blue-600">{employee.phone}</p>
+            <p className="text-sm font-medium text-slate-900">Phone Number</p>
+            <p className="text-sm text-slate-500">{employee.phone}</p>
           </div>
         </div>
         
         <div className="flex items-start gap-3">
-          <MapPin className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <MapPin className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Address</p>
-            <p className="text-sm text-blue-600">{employee.address}</p>
+            <p className="text-sm font-medium text-slate-900">Address</p>
+            <p className="text-sm text-slate-500">{employee.address}</p>
           </div>
         </div>
         
         <div className="flex items-start gap-3">
-          <Calendar className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <Calendar className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Joining Date</p>
-            <p className="text-sm text-blue-600">{new Date(employee.joiningDate).toLocaleDateString()}</p>
+            <p className="text-sm font-medium text-slate-900">Joining Date</p>
+            <p className="text-sm text-slate-500">{new Date(employee.joiningDate).toLocaleDateString()}</p>
           </div>
         </div>
         
         <div className="flex items-start gap-3">
-          <Briefcase className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <Briefcase className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Salary</p>
-            <p className="text-sm text-blue-600">{Number(employee.salary).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}</p>
+            <p className="text-sm font-medium text-slate-900">Salary</p>
+            <p className="text-sm text-slate-500">{Number(employee.salary).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}</p>
           </div>
         </div>
         
         <div className="flex items-start gap-3">
-          <Star className="w-5 h-5 text-blue-400 mt-0.5 shrink-0" />
+          <Star className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-950">Performance Rating</p>
-            <p className="text-sm text-blue-600">{employee.performanceRating}</p>
+            <p className="text-sm font-medium text-slate-900">Performance Rating</p>
+            <p className="text-sm text-slate-500">{employee.performanceRating}</p>
           </div>
         </div>
       </div>
 
       {/* Documents Section */}
-      <div className="pt-6 border-t border-blue-300">
-        <h3 className="text-lg font-semibold text-blue-950 mb-4">Documents</h3>
+      <div className="pt-6 border-t border-slate-200">
+        <h3 className="text-lg font-semibold text-slate-900 mb-4">Documents</h3>
         {employee.documents && employee.documents.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {employee.documents.map(doc => (
-              <div key={doc.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-blue-300">
-                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm border border-blue-300 flex items-center justify-center text-blue-600 shrink-0">
+              <div key={doc.id} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <div className="w-10 h-10 rounded bg-white/5 backdrop-blur-[2px] border border-slate-200 shadow-sm border border-slate-200 flex items-center justify-center text-slate-500 shrink-0">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-blue-950 truncate">{doc.name}</p>
-                  <p className="text-xs text-blue-600">{doc.size}</p>
+                  <p className="text-sm font-medium text-slate-900 truncate">{doc.name}</p>
+                  <p className="text-xs text-slate-500">{doc.size}</p>
                 </div>
                 <Button 
                   variant="ghost" 
@@ -126,14 +126,14 @@ export default function EmployeeDetailPanel({ employee, onEdit, onClose }) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-blue-600 italic bg-gray-50 p-4 rounded-lg text-center border border-blue-300">
+          <p className="text-sm text-slate-500 italic bg-slate-50 p-4 rounded-lg text-center border border-slate-200">
             No documents uploaded yet.
           </p>
         )}
       </div>
 
       {/* Actions */}
-      <div className="flex justify-end gap-3 pt-6 border-t border-blue-300">
+      <div className="flex justify-end gap-3 pt-6 border-t border-slate-200">
         <Button variant="ghost" onClick={onClose}>
           Close
         </Button>

@@ -93,8 +93,8 @@ export default function DepartmentChart({ data }) {
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-[2px] border border-blue-300 shadow-sm rounded-xl p-6 flex flex-col h-full animate-fade-in">
-      <h3 className="text-lg font-semibold text-blue-900 mb-6">Department Distribution</h3>
+    <div className="bg-white/5 backdrop-blur-[2px] border border-slate-300/70 shadow-sm rounded-xl p-6 flex flex-col h-full animate-fade-in">
+      <h3 className="text-lg font-semibold text-slate-800 mb-6">Department Distribution</h3>
       
       <div className="flex-1 flex items-center justify-center min-h-[300px]">
         {/* We wrap it in a div to prevent hydration mismatch for width/height */}

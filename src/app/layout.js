@@ -16,7 +16,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans text-blue-950 bg-transparent">
+      <body className="min-h-full flex flex-col font-sans text-slate-900 bg-transparent">
         <DashboardLayout>{children}</DashboardLayout>
       </body>
     </html>

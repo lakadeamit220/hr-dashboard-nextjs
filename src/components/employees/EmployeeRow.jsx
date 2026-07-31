@@ -24,11 +24,11 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
   const badgeVariant = colorToVariant[statusConfig.color] || 'gray';
 
   return (
-    <tr className="hover:bg-gray-50 transition-colors group">
+    <tr className="hover:bg-slate-50/50 transition-colors group">
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center gap-3">
           {employee.avatar ? (
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-blue-300 shadow-sm">
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-300/70 shadow-sm">
               <Image 
                 src={employee.avatar} 
                 alt={fullName} 
@@ -42,24 +42,24 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             </div>
           )}
           <div>
-            <div className="font-medium text-blue-950">
+            <div className="font-medium text-slate-900">
               {fullName}
             </div>
-            <div className="text-sm text-blue-600">{employee.email}</div>
+            <div className="text-sm text-slate-500">{employee.email}</div>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-blue-950">{employee.designation}</div>
-        <div className="text-sm text-blue-600">{employee.department}</div>
+        <div className="text-sm text-slate-900">{employee.designation}</div>
+        <div className="text-sm text-slate-500">{employee.department}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <div className="text-sm text-blue-950">{employee.phone}</div>
+        <div className="text-sm text-slate-900">{employee.phone}</div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
         <Badge variant={badgeVariant}>{statusConfig.label}</Badge>
         {employee.documents && employee.documents.length > 0 && (
-          <span className="ml-2 inline-flex items-center gap-1 text-xs font-medium text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded-md" title={`${employee.documents.length} document(s)`}>
+          <span className="ml-2 inline-flex items-center gap-1 text-xs font-medium text-slate-500 bg-blue-50 px-1.5 py-0.5 rounded-md" title={`${employee.documents.length} document(s)`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
             {employee.documents.length}
           </span>
@@ -71,7 +71,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             variant="ghost" 
             size="sm"
             onClick={() => onView && onView(employee)}
-            className="text-blue-600 hover:text-primary-600"
+            className="text-slate-500 hover:text-primary-600"
           >
             View
           </Button>
@@ -80,7 +80,7 @@ export default function EmployeeRow({ employee, onEdit, onView }) {
             size="sm" 
             leftIcon={Edit2}
             onClick={() => onEdit && onEdit(employee)}
-            className="text-blue-400 hover:text-primary-600"
+            className="text-slate-400 hover:text-primary-600"
           >
             Edit
           </Button>

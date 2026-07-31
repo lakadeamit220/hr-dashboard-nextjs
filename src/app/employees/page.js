@@ -62,7 +62,7 @@ export default function EmployeesPage() {
   return (
     <div className="flex flex-col gap-2 relative">
       <div className="mb-2">
-        <p className="text-blue-600">Manage your organization's workforce.</p>
+        <p className="text-slate-500">Manage your organization's workforce.</p>
       </div>
       
       <EmployeeFilters 

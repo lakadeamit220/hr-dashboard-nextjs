@@ -4,12 +4,12 @@ export default function Badge({
   className = '' 
 }) {
   const variants = {
-    gray: "bg-gray-100 text-blue-800",
+    gray: "bg-slate-100/50 text-slate-700",
     primary: "bg-primary-50 text-primary-700",
     success: "bg-green-100 text-green-700",
     warning: "bg-amber-100 text-amber-700",
     danger: "bg-red-100 text-red-700",
-    info: "bg-blue-100 text-blue-700",
+    info: "bg-blue-100 text-slate-600",
   };
 
   return (

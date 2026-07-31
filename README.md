@@ -1,6 +1,6 @@
 # HR Dashboard (Next.js MVP)
 
-**🔴 Live Demo:** [https://hr-dashboard-nextjs-eight.vercel.app/](https://hr-dashboard-nextjs-eight.vercel.app/)
+**Live Demo:** [https://hr-dashboard-nextjs-eight.vercel.app/](https://hr-dashboard-nextjs-eight.vercel.app/)
 
 A modern, highly-responsive Human Resources Dashboard built with Next.js 16 (App Router), Tailwind CSS v4, and Zustand. 
 This application serves as an Employee Management System MVP, featuring robust CRUD operations, dynamic filtering, interactive data visualization, an Interactive Organizational Chart, and an elegant, premium user interface powered by Vanta.js.
